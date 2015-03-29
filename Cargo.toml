@@ -1,0 +1,8 @@
+[package]
+
+name = "rirc"
+version = "0.0.1"
+authors = ["Håvar Nøvik <havar.novik@gmail.com>"]
+
+[dependencies]
+regex = "0.1.24"
