@@ -8,15 +8,15 @@
 
 When looking at irc libraries all of them keep the irc command more or less ‘untyped’.
 
-‘’’’python
+````python
 def handle_command(cmd):
     if cmd.starts_with(“PING”):
         send_pong()
-‘’’’
+````
 
 or a bit more typed
 
-‘’’’csharp
+````csharp
 public void HandleJoin(IrcMsg msg)
 {
     switch (msg.Cmd)
@@ -26,11 +26,11 @@ public void HandleJoin(IrcMsg msg)
             // do something with params.
     }
 }
-‘’’’
+````
 
 What if this could be super typed:
 
-‘’’’rust
+````rust
 // struct ChannelName(String);
 
 struct Channel {
@@ -51,4 +51,4 @@ fn handle_join(msg: IrcMsg) {
         _ => panic!(“why was I called with something other than IrcCommand::JOIN)”)
     }
 }
-‘’’’
+````
