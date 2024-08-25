@@ -6,15 +6,20 @@ mod parser;
 #[cfg(test)]
 mod tests;
 
+/**
+Struct symbolic of a sent message.
+
+## Notes
+- `cmd` should likely be an `Option`
+*/
 #[derive(Debug)]
-pub struct Message {
-    pub source: Option<String>,
-    pub cmd: Command,
+pub struct Message<'a> {
+    pub source: Option<&'a str>,
+    pub cmd: Command<'a>,
 }
 
-impl Message {
-    pub fn new(msg: &str) -> Result<Message,IrcError> {
-        return parser::parse(msg);
+impl<'a> Message<'a> {
+    pub fn new(msg: &str) -> Result<Message, IrcError> {
+        parser::parse(msg)
     }
 }
-

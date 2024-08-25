@@ -1,13 +1,22 @@
+/**
+The set of commands for the IRC client.
+
+## Items
+- `Nick`: Change user nickname (?).
+- `Join`: Join IRC channel(s).
+*/
 #[derive(Debug, PartialEq)]
-pub enum Command {
-    NICK(String, Option<usize>),
-    JOIN(Vec<Channel>),
-    NAMES(Vec<String>, Option<String>),
+pub enum Command<'a> {
+    Nick(&'a str, Option<usize>),
+    Join(Vec<Channel<'a>>),
+    Names(Vec<&'a str>, Option<&'a str>),
 }
 
+/**
+Implementation for an IRC channel.
+*/
 #[derive(Debug, PartialEq)]
-pub struct Channel {
-    pub name: String,
-    pub key: Option<String>,
+pub struct Channel<'a> {
+    pub name: &'a str,
+    pub key: Option<&'a str>,
 }
-
